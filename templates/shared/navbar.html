@@ -1,0 +1,107 @@
+<section class="navbar">
+  <a href="{% url 'pages:home' %}" class="logo">首頁</a>
+  <ul class="menu">
+    {% if user.is_authenticated %}
+    <li class="menu-item">
+      <a href="#" class="username">{{ user.username }}</a>
+    </li>
+    <li class="menu-item">
+      <a href="{% url 'users:logout' %}" class="logout">登出</a>
+    </li>
+    {% else %}
+    <li class="menu-item">
+      <a href="{% url 'users:login' %}" class="login">登入</a>
+    </li>
+    <li class="menu-item">
+      <a href="{% url 'users:register' %}" class="register">註冊</a>
+    </li>
+    {% endif %}
+  </ul>
+</section>
+
+<style>
+  /* 整體佈局 */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+
+  /* 首頁 Logo */
+  .navbar .logo {
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* 菜單列表 */
+  .navbar .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+  }
+
+  /* 菜單項目 */
+  .navbar .menu-item {
+    position: relative;
+  }
+
+  /* 菜單連結 */
+  .navbar .menu-item a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  /* 滑鼠懸停效果 */
+  .navbar .menu-item a:hover {
+    background-color: #555;
+    border-radius: 5px;
+    color: #ffcc00;
+  }
+
+  /* 使用者名稱特殊樣式 */
+  .navbar .menu-item .username {
+    font-weight: bold;
+    background-color: #444;
+    padding: 5px 15px;
+    border-radius: 20px;
+  }
+
+  /* 登出按鈕樣式 */
+  .navbar .menu-item .logout {
+    color: #ff6666;
+  }
+
+  .navbar .menu-item .logout:hover {
+    background-color: #ff6666;
+    color: #fff;
+  }
+
+  /* 登入與註冊按鈕樣式 */
+  .navbar .menu-item .login {
+    color: #66ccff;
+  }
+
+  .navbar .menu-item .login:hover {
+    background-color: #66ccff;
+    color: #fff;
+  }
+
+  .navbar .menu-item .register {
+    color: #66ff99;
+  }
+
+  .navbar .menu-item .register:hover {
+    background-color: #66ff99;
+    color: #fff;
+  }
+</style>
